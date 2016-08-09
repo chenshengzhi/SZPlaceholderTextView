@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SZPlaceholderTextView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "textView with placeholder"
   s.homepage     = "https://github.com/chenshengzhi/SZPlaceholderTextView"
   s.license      = { :type => "MIT", :file => "LICENSE" }

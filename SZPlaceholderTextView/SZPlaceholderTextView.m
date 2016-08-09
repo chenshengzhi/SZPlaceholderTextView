@@ -19,6 +19,7 @@
 #pragma mark - Setters -
 - (void)setPlaceholder:(NSString *)placeholder {
     self.placeholderLabel.text = placeholder;
+    [self setNeedsLayout];
 }
 
 - (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor {
@@ -28,11 +29,13 @@
 - (void)setFont:(UIFont *)font {
     [super setFont:font];
     self.placeholderLabel.font = font;
+    [self setNeedsLayout];
 }
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment {
     [super setTextAlignment:textAlignment];
     self.placeholderLabel.textAlignment = textAlignment;
+    [self setNeedsLayout];
 }
 
 #pragma mark - Getters -
@@ -82,11 +85,8 @@
     CGFloat left = self.textContainerInset.left + self.textContainer.lineFragmentPadding;
     CGFloat top = self.textContainerInset.top;
     CGFloat width = self.frame.size.width - left - self.textContainerInset.right - self.textContainer.lineFragmentPadding;
-    CGFloat height = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
-                                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                                           attributes:@{NSFontAttributeName: self.placeholderLabel.font}
-                                                              context:nil].size.height;
-    self.placeholderLabel.frame = CGRectMake(left, top, width, ceil(height));
+    CGSize size = [self.placeholderLabel sizeThatFits:CGSizeMake(width, CGFLOAT_MAX)];
+    self.placeholderLabel.frame = CGRectMake(left, top, width, size.height);
 }
 
 - (void)dealloc {
