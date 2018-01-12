@@ -47,6 +47,12 @@
     return self.placeholderLabel.textColor;
 }
 
+#pragma mark - Setters -
+- (void)setText:(NSString *)text {
+    [super setText:text];
+    [self textDidChange:nil];
+}
+
 #pragma mark - View Cycle -
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
