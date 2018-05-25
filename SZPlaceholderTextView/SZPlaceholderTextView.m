@@ -93,6 +93,13 @@
     CGFloat width = self.frame.size.width - left - self.textContainerInset.right - self.textContainer.lineFragmentPadding;
     CGSize size = [self.placeholderLabel sizeThatFits:CGSizeMake(width, CGFLOAT_MAX)];
     self.placeholderLabel.frame = CGRectMake(left, top, width, size.height);
+    
+    if (!self.text.length) {
+        CGFloat height = CGRectGetMaxY(self.placeholderLabel.frame) + self.textContainerInset.bottom;
+        if (self.contentSize.height < height) {
+            self.contentSize = CGSizeMake(CGRectGetWidth(self.bounds), height);
+        }
+    }
 }
 
 - (void)dealloc {
