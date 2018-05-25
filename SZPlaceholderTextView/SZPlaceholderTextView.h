@@ -11,6 +11,7 @@
 IB_DESIGNABLE
 @interface SZPlaceholderTextView : UITextView
 
+@property (nonatomic, readonly) UILabel *placeholderLabel;
 @property (copy, nonatomic) IBInspectable NSString *placeholder;
 @property (retain, nonatomic) IBInspectable UIColor *placeholderTextColor;
 
